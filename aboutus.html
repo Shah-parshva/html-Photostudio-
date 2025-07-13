@@ -1,91 +1,255 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<style>
-    .service-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
-}
-
-    .service {
-    background-color: black;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 10px;
-    width: 300px;
-    box-shadow: 0 0px 10px rgba(0, 250, 300, 300.1);
-    color: white;
-    transition:0.3s ease;
-}
-
-.service:hover{
-    transform:scale(1.1) translate(-5px);
-}
-
-    .img_deg{
-        float:right;
-        width:35%;
-        border-radius:10px;
-    }
-
-    .a{
-            font-size: 18px;
-            color: black;
-            text-align:center;
-            background-color: grey;
+    <meta charset="UTF-8">
+    <title>About Us - Photography Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        
-</style>
+
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #111;
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            color: #b6d068;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #b6d068;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin: 4px 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #222;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 15px;
+                border-radius: 0 0 0 8px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .img_deg {
+            float: right;
+            width: 35%;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .def {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1 {
+            color: #3b5998;
+            margin: 20px;
+        }
+
+        p {
+            margin: 20px;
+            font-size: 18px;
+        }
+
+        .service-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .service {
+            background-color: black;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 250, 300, 0.3);
+            transition: 0.3s ease;
+            text-align: center;
+        }
+
+        .service img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .service:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .footer {
+            background-color: grey;
+            color: black;
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .img_deg {
+                float: none;
+                width: 100%;
+                display: block;
+                margin: 10px auto;
+            }
+
+            p, h1 {
+                text-align: center;
+                margin: 15px;
+                font-size: 16px;
+            }
+
+            .service {
+                width: 90%;
+            }
+
+            .footer {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
-<body bgcolor="black">
-	<img class="def" src="11.jpeg"><hr>
+<body>
 
-    <img class="img_deg" src="10.jpeg">
+    <!-- ===== Navbar with Hamburger ===== -->
+    <div class="navbar">
+        <h2>Photography Studio</h2>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="./index.html">Index</a>
+            <a href="./home.html">Home</a>
+            <a href="./films.html">Films</a>
+            <a href="./galleries.html">Galleries</a>
+            <a href="./aboutus.html">aboutus</a>
+            <a href="./prices.html">Price</a>
+            <a href="./signup.html">Price</a>
+            
+        </div>
+    </div>
 
-<p><font color="#3b5998"><h1><b>ABOUT US<br><br></b></h1></font></p>
-<font color="white" size="5">Everything You Need to Create the Perfect Shot<br><br></font>
-<font color="white" size="5"><p>At Photography Studio AVM, we offer a wide range of services to meet all your visual art needs.
-<br>
-From training and photography to video production and editing, we have the expertise and equipment to make your story unforgettable.
-<br>
-Our team of professionals works with you at every step, ensuring the highest level of quality and creativity.
-<br><br><br><br></p></font>
+    <!-- ===== Page Content ===== -->
+    <img class="def" src="11.jpeg" alt="Banner Image">
+    <hr>
 
-<section class="service-section">
+    <img class="img_deg" src="10.jpeg" alt="About Image">
+
+    <h1 id="about"><b>ABOUT US</b></h1>
+    <p>Everything You Need to Create the Perfect Shot</p>
+    <p>At Photography Studio AVM, we offer a wide range of services to meet all your visual art needs.
+    From training and photography to video production and editing, we have the expertise and equipment to make your story unforgettable.
+    Our team of professionals works with you at every step, ensuring the highest level of quality and creativity.</p>
+
+    <!-- Services Section -->
+    <section id="services" class="service-section">
         <div class="service">
-            <img src="5.jpeg">
+            <img src="5.jpeg" alt="Training">
             <h2>TRAINING</h2>
-            <p><h4>We offer courses and workshops in photography and videography. Learn about technique, composition, lighting, and more from our experts.</h4></p>
+            <p>We offer courses and workshops in photography and videography. Learn about technique, composition, lighting, and more from our experts.</p>
         </div>
         <div class="service">
-            <img src="6.jpeg">
+            <img src="6.jpeg" alt="Video Shooting">
             <h2>VIDEO SHOOTING</h2>
-            <p><h4>Our team specializes in professional video shooting for any event. From commercials to wedding videos, we create visual content that will impress your audience.</h4></p>
+            <p>Our team specializes in professional video shooting for any event. From commercials to wedding videos, we create visual content that will impress your audience.</p>
         </div>
         <div class="service">
-            <img src="7.jpeg">
+            <img src="7.jpeg" alt="Video Editing">
             <h2>VIDEO EDITING</h2>
-            <p><h4>We provide professional video editing services. Our editors use the latest tcehnology to turn footage into masterpieces,adding special effect,music, and graphics</h4></p>
+            <p>We provide professional video editing services. Our editors use the latest technology to turn footage into masterpieces, adding special effects, music, and graphics.</p>
         </div>
-         <div style="margin-top: 40px;" class="service">
-            <img src="8.jpeg">
+        <div class="service">
+            <img src="8.jpeg" alt="Montage">
             <h2>MONTAGE</h2>
-            <p><h4>Our editors know how to turn individual shots into a captivating story. They work with you to create content that meets your needs and exceeds your expectations.</h4></p>
+            <p>Our editors know how to turn individual shots into a captivating story. They work with you to create content that meets your needs and exceeds your expectations.</p>
         </div>
-        <div style="margin-top: 40px;" class="service">
-            <img src="9.jpeg">
+        <div class="service">
+            <img src="9.jpeg" alt="Photography">
             <h2>PHOTOGRAPHY</h2>
-            <p><h4>We specialize in various types of photography, including portraits, wedding photography, corporate events, and product shoots. Every shot is a work of art that we create together with you.</h4></p>
+            <p>We specialize in various types of photography, including portraits, weddings, corporate events, and product shoots. Every shot is a work of art we create with you.</p>
         </div>
-</section><br>
-<h1 style="text-transform: capitalize; color:white">check out the below table to see the Photography Price List</h1> 
-    <br><br><br>
+    </section>
 
-<p style="background-color:grey;" class="a"><br><br>Privacy Policy Terms & Conditions<br><br>
-Copyright © 2024 Responsive . All Rights Reserved | Powered By Responsive Theme<br><br><p>
+    <!-- Pricing Section -->
+    <h1 id="pricing" style="text-align: center; text-transform: capitalize;">Check out the below table to see the Photography Price List</h1>
+    <br><br>
 
-</body>
-</html>
+    <!-- Footer -->
+    <div id="contact" class="footer">
+        <p>Privacy Policy | Terms & Conditions</p>
+        <p>Copyright © 2024 Responsive. All Rights Reserved | Powered By Responsive Theme</p>
+    </div>
+
+    <!-- Script for Hamburger Toggle -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById("navLinks");
+            nav.classList.toggle("active");
+        }
+    </script>
+
 </body>
 </html>

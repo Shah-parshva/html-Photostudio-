@@ -1,179 +1,270 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photography Price List</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      line-height: 1.6;
+    }
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: black;
-    color: #333;
-}
+    /* ===== Navbar Styles ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #2e8b57;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
+    .navbar h2 {
+      font-size: 22px;
+      color: white;
+    }
 
-.container {
-    width: 90%;
-    max-width: 1300px;
-    margin: 0 auto;
-}
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
 
-header {
-    background-color: #2e8b57;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-}
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
 
-nav ul {
-    list-style: none;
-    padding: 10px 0;
-}
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
 
-nav ul li {
-    display: inline-block;
-    margin: 0 15px;
-}
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+    }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-}
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #2e8b57;
+        width: 200px;
+        padding: 10px;
+        border-radius: 0 0 0 8px;
+      }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
+      .nav-links.active {
+        display: flex;
+      }
 
-.blog-posts {
-    margin: 40px 0;
-}
+      .hamburger {
+        display: flex;
+      }
+    }
 
-.blog-posts h2 {
-    text-align: center;
-    color: #3b5998;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-}
+    /* ===== Page Content Styles ===== */
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
 
-.post {
-    display: flex;
-    background-color: black;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0px 15px rgba(0, 250, 300, 300.1);
-    overflow: hidden;
-    transition:0.2s ease;
-}
+    .blog-posts h2 {
+      text-align: center;
+      color: #3b5998;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
 
-.post:hover{
-    transform: scale(1.03) translateY(-5px);
+    .post {
+      display: flex;
+      background-color: black;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0px 15px rgba(0, 250, 300, 0.3);
+      overflow: hidden;
+      transition: 0.2s ease;
+    }
 
-}
+    .post:hover {
+      transform: scale(1.03) translateY(-5px);
+    }
 
-.post img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px 0 0 10px;
-}
+    .post img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+    }
 
-.post-content {
-    padding: 20px;
-    flex: 1;
-}
+    .post-content {
+      padding: 20px;
+      flex: 1;
+    }
 
-.post-content h3 {
-    color: #3b5998;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-}
+    .post-content h3 {
+      color: #3b5998;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
 
-.post-content p {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    color: #555;
-}
+    .post-content p {
+      font-size: 1rem;
+      color: #ddd;
+    }
 
-.a{
-            font-size: 18px;
-            color: black;
-            text-align:center;
-            background-color: grey;
-        }
-h2{
-    font-size: 1.5rem;
-    color: #2e8b57;
-    margin-bottom: 10px;
-}
+    .footer {
+      background-color: grey;
+      color: black;
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 16px;
+    }
 
-    </style>
+    @media (max-width: 768px) {
+      .post {
+        flex-direction: column;
+        align-items: center;
+      }
 
+      .post img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .post-content {
+        padding: 15px;
+        text-align: center;
+      }
+
+      .post-content h3 {
+        font-size: 1.4rem;
+      }
+
+      .post-content p {
+        font-size: 0.95rem;
+      }
+
+      .blog-posts h2 {
+        font-size: 1.7rem;
+      }
+
+      .footer {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
- 
-    <section class="blog-posts container">
-            <h2>Our List of price</h2>
 
-            <article class="post">
-                <img src="33.webp"alt="Sustainable Living Tips">
-                <div class="post-content">
-                    <h3>Portrait Shoots</h3>
-                    <p>Discover individual and family portraits that highlight the personality and emotions of our subjects, turning moments into timeless art. The price is 70k - 200k</p>
-                   
-                </div>
-            </article><br>
+  <!-- ===== Hamburger Navbar ===== -->
+  <div class="navbar">
+    <h2>Photography Studio</h2>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="./index.html">Index</a>
+      <a href="./home.html">Home</a>
+      <a href="./films.html">Films</a>
+      <a href="./galleries.html">galleries</a>
+	  <a href="./aboutus.html">About us</a>
+	  <a href="./prices.html">Prices</a>
+	  <a href="./signup.html">signup</a>
+    </div>
+  </div>
 
-            <article class="post">
-                <img src="31.webp" alt="Zero Waste Lifestyle">
-                <div class="post-content">
-                    <h3>Pre Wedding Video</h3>
-                    <p>Explore romantic and candid shots that showcase the love and connection between couples as they prepare for their big day. The price is 150k - 300k</p>
-                   
-                </div>
-            </article><br>
+  <!-- ===== Blog-Style Price List ===== -->
+  <section class="blog-posts container" id="prices">
+    <h2>Our List of Prices</h2>
 
-            <article class="post">
-                <img src="32.webp" alt="Renewable Energy at Home">
-                <div class="post-content">
-                    <h3>Wedding Shoots</h3>
-                    <p>Experience the magic of wedding moments, from intimate ceremonies to grand celebrations, beautifully captured to last a lifetime. The price is 80k - 150k </p>
-                   
-                </div>
-            </article><br>
+    <article class="post">
+      <img src="33.webp" alt="Portrait Shoots">
+      <div class="post-content">
+        <h3>Portrait Shoots</h3>
+        <p>Individual and family portraits that highlight personality and emotion. Price: ₹70,000 – ₹200,000</p>
+      </div>
+    </article>
 
-            <article class="post">
-                <img src="b8.webp" alt="Renewable Energy at Home">
-                <div class="post-content">
-                    <h3>Baby Shower Photoshoot & videography</h3>
-                    <p>Every Baby Shower is unique-your photos should be too. We focus on authentic emotions, soft details, and joyful celebrations.  The price is 70k-100k
-                    </p>
-                </div>
-            </article><br>
-            <article class="post">
-                <img src="pa9.webp" alt="Renewable Energy at Home">
-                <div class="post-content">
-                    <h3>Concerts Photoshoot & videography</h3>
-                    <p>Concerts are more thsn music-they're emotion,movement,and memory. we make those moments last forever.We specialize in high-impact, high-energy, photography that brings your music to life even after the last note fades.  The price is 200k-600k</p>
-                </div>
-            </article>
-            <article class="post">
-                <img src="34.webp" alt="Renewable Energy at Home">
-                <div class="post-content">
-                    <h3>Candid Photography</h3>
-                    <p>Explore our experimental and artistic photography projects, where we push the boundaries of conventional photography to create unique visual stories. The price is 50k - 90k</p>
-                   
-                </div>
-            </article><br>
-        </section>
-        <br><br><br>
-        <p style="background-color:grey;" class="a"><br><br>Privacy Policy Terms & Conditions<br><br>
-Copyright © 2024 Responsive . All Rights Reserved | Powered By Responsive Theme<br><br></p>
+    <article class="post">
+      <img src="31.webp" alt="Pre Wedding">
+      <div class="post-content">
+        <h3>Pre Wedding Video</h3>
+        <p>Romantic and candid storytelling for couples. Price: ₹150,000 – ₹300,000</p>
+      </div>
+    </article>
+
+    <article class="post">
+      <img src="32.webp" alt="Wedding">
+      <div class="post-content">
+        <h3>Wedding Shoots</h3>
+        <p>Ceremonies and grand celebrations captured beautifully. Price: ₹80,000 – ₹150,000</p>
+      </div>
+    </article>
+
+    <article class="post">
+      <img src="b8.webp" alt="Baby Shower">
+      <div class="post-content">
+        <h3>Baby Shower Photoshoot & Videography</h3>
+        <p>Authentic emotions and joyful celebration memories. Price: ₹70,000 – ₹100,000</p>
+      </div>
+    </article>
+
+    <article class="post">
+      <img src="pa9.webp" alt="Concerts">
+      <div class="post-content">
+        <h3>Concerts Photoshoot & Videography</h3>
+        <p>High-energy, impactful visuals for music events. Price: ₹200,000 – ₹600,000</p>
+      </div>
+    </article>
+
+    <article class="post">
+      <img src="34.webp" alt="Candid Photography">
+      <div class="post-content">
+        <h3>Candid Photography</h3>
+        <p>Artistic shots that tell unique visual stories. Price: ₹50,000 – ₹90,000</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <div class="footer">
+    <p>Privacy Policy | Terms & Conditions</p>
+    <p>© 2024 Responsive. All Rights Reserved | Powered By Responsive Theme</p>
+  </div>
+
+  <!-- ===== Script for Hamburger ===== -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+
 </body>
-</html>
-   </body>
 </html>

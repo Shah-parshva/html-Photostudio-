@@ -1,80 +1,127 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Sign Up</title>
-	<style>
-		body {
-			background: linear-gradient(to bottom right, pink, yellow);
-		}
-		form {
-			background: transparent;
-			width: 50%;
-			padding: 12px 20px;
-			margin: 8px 0;
-			margin-top: 100px;
-			box-sizing: border-box;
-			text-align: left;
-			border-radius: 10px;
-			font-size: 18px;
-		}
-		input[type="text"], input[type="email"], input[type="password"] {
-			width: 100%;
-			padding: 10px;
-			margin-top: 5px;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-		}
-		input[type="submit"] {
-			background-color: blue;
-			color: white;
-			padding: 10px 15px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			margin-top: 10px;
-		}
-		input[type="submit"]:hover {
-			background-color: darkblue;
-		}
-	</style>
-	<script>
-		function validateForm() {
-			var password = document.forms["signupForm"]["password"].value;
-			var confirmPassword = document.forms["signupForm"]["confirm_password"].value;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, pink, yellow);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-			if (password !== confirmPassword) {
-				alert("Passwords do not match. Please try again.");
-				return false; 
-			}
+    form {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 25px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 450px;
+      box-sizing: border-box;
+      font-size: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
 
-			if (password.length < 8) {
-                alert("Password must be at least 8 characters long");
-                return false;
-            }
-			return true;
-		}
-	</script>
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    input[type="submit"] {
+      background-color: blue;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: darkblue;
+    }
+
+    .note {
+      text-align: center;
+      margin-top: 20px;
+      color: #444;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+  <script>
+    function validateForm() {
+      var password = document.forms["signupForm"]["password"].value;
+      var confirmPassword = document.forms["signupForm"]["confirm_password"].value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match. Please try again.");
+        return false;
+      }
+
+      if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
 </head>
 <body>
-	<center>
-		<form name="signupForm" onsubmit="return validateForm()">
-			<h2 align="center">REGISTRATION FORM</h2>
+  <form name="signupForm" onsubmit="return validateForm()">
+    <h2>REGISTRATION FORM</h2>
 
-			<label for="name">Name:</label><br>
-			<input type="text" id="name" name="name" placeholder="Please Enter Your Name" maxlength="25" size="25" required=""><br><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Please Enter Your Name" maxlength="25" required>
 
-			<label for="email">Email:</label><br>
-			<input type="email" id="email" name="email" placeholder="Please Enter Your Email" maxlength="25" size="25" required=""><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Please Enter Your Email" maxlength="25" required>
 
-			<label for="password">Password:</label><br>
-			<input type="password" id="password" name="password" placeholder="Please Enter Your Password" maxlength="25" size="25" required=""><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Please Enter Your Password" maxlength="25" required>
 
-			<label for="confirm_password">Confirm Password:</label><br>
-			<input type="password" id="confirm_password" name="confirm_password" placeholder="Please Confirm Your Password" maxlength="25" size="25" required=""><br><br>
+    <label for="confirm_password">Confirm Password:</label>
+    <input type="password" id="confirm_password" name="confirm_password" placeholder="Please Confirm Your Password" maxlength="25" required>
 
-			<input type="submit" value="Submit"><br><br><br><br>
+    <input type="submit" value="Submit">
 
-			<center><li>Please enter all the fields</li></center>
-		</form>
-	</center>
+    <div class="note">Please enter all the fields</div>
+  </form>
 </body>
 </html>

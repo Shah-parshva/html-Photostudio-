@@ -1,43 +1,164 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>galleries</title>
+    <meta charset="UTF-8">
+    <title>Galleries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ===== Navbar Styles ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222;
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar h2 {
+            color: #b6d068;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #b6d068;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin: 4px 0;
+            transition: 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #111;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 15px;
+                border-radius: 0 0 0 8px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ===== Video Container Styles ===== */
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
-            max-width: 4200px;
-            margin: 0 auto;
+            justify-content: center;
             background: #b6d068;
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.25); 
+            padding: 20px;
+            gap: 20px;
         }
 
-        .source {
-            width: 20%;
-            margin: 10px;
-            margin-bottom:100px;
-            background:black;
-            padding:10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-            box-sizing:border-box;
+        video {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
-        
+
+        @media (max-width: 768px) {
+            video {
+                max-width: 100%;
+            }
+
+            .container {
+                padding: 10px;
+                gap: 15px;
+            }
+        }
     </style>
 </head>
-<body bgcolor="black">
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <div class="navbar">
+        <h2>Video Gallery</h2>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="./index.html">Index</a>
+            <a href="./home.html">Home</a>
+            <a href="./films.html">Films</a>
+            <a href="./galleries.html">Galleries</a>
+            <a href="./aboutus.html">aboutus</a>
+            <a href="./prices.html">Price</a>
+            <a href="./signup.html">Price</a>
+            
+        </div>
+    </div>
+
+    <!-- ===== Video Gallery ===== -->
     <div class="container">
-        <video width="400" height="300" controls>
-        <source src="v1.mp4" type="video/mp4">
+        <video controls>
+            <source src="v1.mp4" type="video/mp4">
         </video>
-        <video width="400" height="300" controls>
-        <source src="v2.mp4" type="video/mp4">
+        <video controls>
+            <source src="v2.mp4" type="video/mp4">
         </video>
-        <video width="400" height="300" controls>
-        <source src="v3.mp4" type="video/mp4">
+        <video controls>
+            <source src="v3.mp4" type="video/mp4">
         </video>
-        <video width="400" height="300" controls>
-        <source src="v4.mp4" type="video/mp4">
+        <video controls>
+            <source src="v4.mp4" type="video/mp4">
         </video>
+    </div>
+
+    <!-- ===== JS for Hamburger Toggle ===== -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+
 </body>
 </html>

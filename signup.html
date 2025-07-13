@@ -1,83 +1,210 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Sign Up</title>
-    <style>
-        body {
-            background-repeat: no-repeat;
-            background: linear-gradient(to bottom right, pink, yellow);
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        form {
-            padding: 20px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 500px;
-            box-sizing: border-box;
-            color: black;
-        }
-        h2 {
-            margin-top: 0;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        input[type="submit"] {
-            background-color: blue;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .login-link a {
-            color: blue;
-            text-decoration: none;
-        }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, pink, yellow);
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar h2 {
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+        border-radius: 0 0 0 8px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ===== Form Styles ===== */
+    .form-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 15px;
+    }
+
+    form {
+      background-color: white;
+      color: black;
+      padding: 25px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-align: center;
+      color: #2e8b57;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #2e8b57;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #246b45;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .login-link a {
+      color: #2e8b57;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ===== Hamburger Navbar ===== -->
+  <div class="navbar">
+    <h2>Photography Studio</h2>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">Pricing</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <!-- ===== Sign Up Form ===== -->
+  <div class="form-container">
     <form>
-        <h2>Registration Form</h2>
+      <h2>Registration Form</h2>
 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="n1" placeholder="Please Enter Your Name" maxlength="25" required>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="n1" placeholder="Enter your name" maxlength="25" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="n2" placeholder="Please Enter Your Email" maxlength="25" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="n2" placeholder="Enter your email" maxlength="25" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="p1" placeholder="Please Enter Your Password" maxlength="25" required><br><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="p1" placeholder="Enter your password" maxlength="25" required>
 
-        <input type="submit" name="s1" value="Submit">
+      <input type="submit" name="s1" value="Submit">
 
-        <div class="login-link"><br>
-            <p>Already Have An Account? <a href="s.html">Sign In Here</a></p>
-        </div>
+      <div class="login-link">
+        <p>Already have an account? <a href="s.html">Sign In Here</a></p>
+      </div>
     </form>
+  </div>
+
+  <!-- ===== JavaScript for Hamburger Toggle ===== -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+
 </body>
 </html>
